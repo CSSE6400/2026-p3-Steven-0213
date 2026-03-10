@@ -1,6 +1,6 @@
-services:
-  database:
-    image: postgres:18.3
+services: 
+  database:              # ← services 下的第一级，缩进 2 空格
+    image: postgres:18.3 # ← database 下的配置，再缩进 2 空格（总共4空格）
     restart: always
     environment:
       POSTGRES_PASSWORD: verySecretPassword
@@ -8,9 +8,9 @@ services:
       POSTGRES_DB: todo
     volumes:
       - ./data:/var/lib/postgresql
-
-  app:
-    build: .
+  
+  app:                   # ← 和 database 同级，缩进 2 空格
+    build: .             # ← app 下的配置，再缩进 2 空格
     restart: always
     environment:
       SQLALCHEMY_DATABASE_URI: "postgresql://administrator:verySecretPassword@database:5432/todo"
